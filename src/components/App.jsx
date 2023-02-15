@@ -1,4 +1,6 @@
 import './styles.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import React, { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
@@ -30,10 +32,7 @@ export class App extends Component {
 
   async componentDidUpdate(_, prevState) {
     const { query, page, perPage } = this.state;
-    if (
-      query !== prevState.query ||
-      perPage !== prevState.perPage
-    ) {
+    if (query !== prevState.query || perPage !== prevState.perPage) {
       this.setState({ status: 'LOADING' });
       try {
         this.setState({ loading: true });
@@ -43,7 +42,7 @@ export class App extends Component {
         this.setState({ status: 'REJECTED' });
         throw new Error(error.message);
       } finally {
-        this.setState({ loading:false})
+        this.setState({ loading: false });
       }
     }
   }
@@ -62,9 +61,9 @@ export class App extends Component {
   render() {
     const { albums } = this.state;
     const { totalHits } = albums;
- 
+
     return (
-      <>
+      <div className="App">
         <Searchbar handleSubmit={this.handleSubmit} />
         {/* {this.state.loading && <Loader />} */}
         <ImageGallery albums={albums} />
@@ -72,7 +71,8 @@ export class App extends Component {
         {Math.floor(totalHits / this.state.perPage) > 1 && (
           <Button onClick={this.handleLoadMore} />
         )}
-      </>
+        <ToastContainer autoClose={3000} />
+      </div>
     );
   }
 }
