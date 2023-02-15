@@ -1,6 +1,6 @@
 import '../styles.css';
 import React, { Component } from 'react';
-import { BsSearch } from 'react-icons/bs';
+import { FcSearch } from 'react-icons/fc';
 
 export class Searchbar extends Component {
   state = {
@@ -19,7 +19,7 @@ export class Searchbar extends Component {
       <header className="Searchbar">
         <form className="SearchForm" onSubmit={this.handleFormSUbmit}>
           <button type="submit" className="SearchFormButton">
-            <BsSearch style={{ width: 20, height: 20 }} />
+            <FcSearch style={{ width: 20, height: 20 }} />
             <span className="SearchForm-button-label">Search</span>
           </button>
 
