@@ -4,7 +4,7 @@ import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 export function ImageGallery({ albums }) {
   return (
     <ul className="ImageGallery">
-      {albums !== undefined &&
+      {albums &&
         albums.map(hit => (
           <ImageGalleryItem
             key={hit.id}
