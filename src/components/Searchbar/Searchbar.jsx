@@ -28,7 +28,7 @@ export class Searchbar extends Component {
             className="SearchForm-input"
             type="text"
             autoComplete="off"
-            name='name'
+            name="name"
             value={this.state.name}
             autoFocus
             onChange={this.handleInput}
@@ -39,3 +39,7 @@ export class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

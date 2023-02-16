@@ -6,9 +6,9 @@ import { createPortal } from 'react-dom';
 export class Modal extends Component {
   onClose = e => {
     if (e.currentTarget === e.target) {
-      this.props.closeModal()
+      this.props.closeModal();
     }
-  }
+  };
   onEscape = e => {
     if (e.code === 'Escape') {
       this.props.closeModal();
@@ -32,3 +32,11 @@ export class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  tag: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  largeImage: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  onClose: PropTypes.func,
+};
