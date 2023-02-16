@@ -1,4 +1,5 @@
 import '../styles.css';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FcSearch } from 'react-icons/fc';
 

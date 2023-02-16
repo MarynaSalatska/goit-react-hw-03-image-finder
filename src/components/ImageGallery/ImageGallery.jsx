@@ -1,4 +1,5 @@
 import '../styles.css';
+import PropTypes from 'prop-types';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export function ImageGallery({ albums }) {
@@ -16,3 +17,14 @@ export function ImageGallery({ albums }) {
     </ul>
   );
 }
+
+ImageGallery.propTypes = {
+  albums: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string,
+      tags: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+    })
+  ),
+};
