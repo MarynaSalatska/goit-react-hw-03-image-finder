@@ -2,11 +2,10 @@ import '../styles.css';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export function ImageGallery({ albums }) {
-  const { hits } = albums;
   return (
     <ul className="ImageGallery">
-      {hits !== undefined &&
-        hits.map(hit => (
+      {albums !== undefined &&
+        albums.map(hit => (
           <ImageGalleryItem
             key={hit.id}
             image={hit.webformatURL}
