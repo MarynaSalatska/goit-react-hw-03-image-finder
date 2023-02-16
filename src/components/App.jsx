@@ -1,6 +1,4 @@
 import './styles.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import React, { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
@@ -71,7 +69,6 @@ export class App extends Component {
         {Math.floor(totalHits / this.state.perPage) > 1 && (
           <Button onClick={this.handleLoadMore} />
         )}
-        <ToastContainer autoClose={3000} />
       </div>
     );
   }
