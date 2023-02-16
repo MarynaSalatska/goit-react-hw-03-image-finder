@@ -3,6 +3,11 @@ import { Component } from 'react';
 import { createPortal } from 'react-dom';
 
 export class Modal extends Component {
+  onClose = e => {
+    if (e.currentTarget === e.target) {
+      this.props.closeModal()
+    }
+  }
   onEscape = e => {
     if (e.code === 'Escape') {
       this.props.closeModal();
@@ -17,7 +22,7 @@ export class Modal extends Component {
   render() {
     const { id, largeImage, tag } = this.props;
     return createPortal(
-      <div className="Overlay">
+      <div className="Overlay" onClick={this.onClose}>
         <div className="Modal" key={id}>
           <img src={largeImage} alt={tag} />
         </div>
