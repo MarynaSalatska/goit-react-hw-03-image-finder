@@ -21,7 +21,6 @@ export class App extends Component {
   state = {
     albums: [],
     status: 'idle',
-    loading: false,
     page: 1,
     query: '',
     perPage: 12,
@@ -33,14 +32,11 @@ export class App extends Component {
     if (query !== prevState.query || perPage !== prevState.perPage) {
       this.setState({ status: 'LOADING' });
       try {
-        this.setState({ loading: true });
         const response = await getAlbumsService({ query, page, perPage });
         this.setState({ albums: response, status: 'FULFILLED' });
       } catch (error) {
         this.setState({ status: 'REJECTED' });
         throw new Error(error.message);
-      } finally {
-        this.setState({ loading: false });
       }
     }
   }
@@ -57,15 +53,16 @@ export class App extends Component {
   };
 
   render() {
-    const { albums } = this.state;
+    const { albums, status } = this.state;
     const { totalHits } = albums;
 
     return (
       <div className="App">
         <Searchbar handleSubmit={this.handleSubmit} />
-        {/* {this.state.loading && <Loader />} */}
+
         <ImageGallery albums={albums} />
-        <Loader />
+
+        {status === 'LOADING' && <Loader />}
         {Math.floor(totalHits / this.state.perPage) > 1 && (
           <Button onClick={this.handleLoadMore} />
         )}
